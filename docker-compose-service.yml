@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  test-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-service
+    environment:
+      - DB_NAMESPACE=Test
+    ports:
+      - "5000:5000"
+    depends_on:
+      - local-db
+  prod-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-service
+    environment:
+    - DB_NAMESPACE=Prod
+    ports:
+    - "5001:5000"
+    depends_on:
+    - local-db
