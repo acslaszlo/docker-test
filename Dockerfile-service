@@ -1,7 +1,10 @@
 FROM python:3.6-alpine
 
-COPY requirements.txt app.py /code/
+COPY requirements.txt /code/
+COPY service/app.py /code/service/
 WORKDIR /code
 RUN pip install -r requirements.txt
+
+ENV FLASK_APP service/app.py
 
 CMD ["flask", "run", "--host=0.0.0.0"]
