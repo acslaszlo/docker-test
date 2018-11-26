@@ -16,7 +16,7 @@ def check_service(started: datetime, url: str) -> None:
             break
 
         try:
-            r = requests.get(url=url)
+            r = requests.get(url=url, timeout=1)
 
             if r.status_code // 100 == 2:
                 print(f'{url} is OK')
