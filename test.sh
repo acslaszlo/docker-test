@@ -24,7 +24,7 @@ function finish() {
 trap finish EXIT
 
 . test-venv/bin/activate
-pip install -r requirements_test.txt
+pip install -r tests/requirements.txt
 
 msg "Starting local db"
 docker-compose -f "${COMPOSE_BASE_FILE}" up --build -d
