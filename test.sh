@@ -3,7 +3,7 @@
 set -e
 
 COMPOSE_BASE_FILE='docker-compose-base.yml'
-COMPOSE_SERICE_FILE='docker-compose-service.yml'
+COMPOSE_SERICE_FILE='tests/docker-compose-service.yml'
 
 function msg() {
     echo
