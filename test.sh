@@ -14,6 +14,9 @@ function msg() {
 }
 
 function finish() {
+    msg "Saving the logs"
+    docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" logs > logs.txt
+
     msg "Stopping docker compose"
     docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" down
 }
@@ -41,8 +44,5 @@ msg "Running the tests"
 set +e
 pytest tests -v
 RES=$?
-
-msg "Saving the logs"
-docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" logs > logs.txt
 
 exit ${RES}
