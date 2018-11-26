@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-service
+      network: host
     environment:
       - DB_NAMESPACE=Test
     ports:
@@ -15,6 +16,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-service
+      network: host
     environment:
     - DB_NAMESPACE=Prod
     ports:
