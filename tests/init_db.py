@@ -1,13 +1,8 @@
 from datetime import datetime
 
-from flywheel import Engine, Field, Model
+from flywheel import Engine
 
-
-class Data(Model):
-    id = Field(data_type=str, hash_key=True)
-    val1 = Field(data_type=str)
-    val2 = Field(data_type=int)
-    val3 = Field(data_type=str)
+from service.models import Data
 
 
 def write_data(namepsace: str, val3_base: str) -> None:

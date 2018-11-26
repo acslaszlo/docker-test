@@ -2,15 +2,10 @@ import json
 import os
 
 from flask import Flask
-from flywheel import Engine, Field, Model
+from flywheel import Engine
 from flywheel.query import EntityNotFoundException
 
-
-class Data(Model):
-    id = Field(data_type=str, hash_key=True)
-    val1 = Field(data_type=str)
-    val2 = Field(data_type=int)
-    val3 = Field(data_type=str)
+from service.models import Data
 
 
 db = Engine(namespace=os.environ['DB_NAMESPACE'])
