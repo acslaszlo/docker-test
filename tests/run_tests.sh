@@ -3,7 +3,7 @@
 set -e
 
 COMPOSE_BASE_FILE='docker-compose-base.yml'
-COMPOSE_SERICE_FILE='tests/docker-compose-service.yml'
+COMPOSE_SERVICE_FILE='tests/docker-compose-service.yml'
 
 function msg() {
     echo
@@ -15,10 +15,10 @@ function msg() {
 
 function finish() {
     msg "Saving the logs"
-    docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" logs > logs.txt
+    docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERVICE_FILE}" logs > logs.txt
 
     msg "Stopping docker compose"
-    docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" down
+    docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERVICE_FILE}" down
 }
 
 trap finish EXIT
@@ -33,7 +33,7 @@ msg "Initializing the db"
 PYTHONPATH=. python tests/init_db.py
 
 msg "Staring docker compose"
-docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERICE_FILE}" up --build -d
+docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERVICE_FILE}" up --build -d
 
 msg "Waiting for health check result"
 python check_services.py \
