@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  dev-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-service
+      network: host
+    environment:
+      - DB_NAMESPACE=Test
+      - FLASK_DEBUG=1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./service/:/code/service
+    depends_on:
+      - local-db
