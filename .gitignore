@@ -4,3 +4,4 @@ logs.txt
 test-venv
 venv
 *.pyc
+tests/docker-compose-base.yml

@@ -3,7 +3,7 @@ version: '3.7'
 services:
   test-server:
     build:
-      context: .
+      context: ../
       dockerfile: Dockerfile-service
       network: host
     environment:
@@ -14,7 +14,7 @@ services:
       - local-db
   prod-server:
     build:
-      context: .
+      context: ../
       dockerfile: Dockerfile-service
       network: host
     environment:

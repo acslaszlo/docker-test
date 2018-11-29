@@ -10,7 +10,7 @@ services:
       - DB_NAMESPACE=Test
       - FLASK_DEBUG=1
     ports:
-      - "5000:5000"
+      - "5002:5000"
     volumes:
       - ./service/:/code/service
     depends_on:

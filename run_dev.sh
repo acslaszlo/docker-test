@@ -27,7 +27,9 @@ msg "Starting local db"
 docker-compose -f "${COMPOSE_BASE_FILE}" up --build -d
 
 msg "Initializing the db"
-PYTHONPATH=. python tests/init_db.py
+PYTHONPATH=. \
+    python tests/init_db.py \
+    --db-port 8001
 
 msg "Staring docker compose"
 docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERVICE_FILE}" up --build

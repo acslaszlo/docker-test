@@ -2,8 +2,11 @@
 
 set -e
 
-COMPOSE_BASE_FILE='docker-compose-base.yml'
+COMPOSE_BASE_FILE='tests/docker-compose-base.yml'
 COMPOSE_SERVICE_FILE='tests/docker-compose-service.yml'
+
+# Let's brute force the exposed ports. Should be used a cooler solution but it will do for now.
+cat docker-compose-base.yml | sed 's|8001:8000|8000:8000|' > "${COMPOSE_BASE_FILE}"
 
 function msg() {
     echo
@@ -30,7 +33,9 @@ msg "Starting local db"
 docker-compose -f "${COMPOSE_BASE_FILE}" up --build -d
 
 msg "Initializing the db"
-PYTHONPATH=. python tests/init_db.py
+PYTHONPATH=. \
+    python tests/init_db.py \
+    --db-port 8000
 
 msg "Staring docker compose"
 docker-compose -f "${COMPOSE_BASE_FILE}" -f "${COMPOSE_SERVICE_FILE}" up --build -d

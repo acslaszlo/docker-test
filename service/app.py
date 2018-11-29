@@ -14,7 +14,7 @@ db.connect(
     access_key='AK',
     secret_key='SK',
     host='local-db',
-    port=8000,
+    port=8000,  # The application communicates on the docker-compose network with local DynamoDB
     is_secure=False,
 )
 
