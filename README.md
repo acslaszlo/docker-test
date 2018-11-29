@@ -51,6 +51,13 @@ Ports exposed on docker-compose network:
  * test-server:5000
  * prod-server:5000
 
+### Ports overview
+
+| Service   | Dev  | Test      |
+|-----------|------|-----------|
+| DynamoDB  | 8001 | 8000      |
+| Flask app | 5002 | 5000,5001 |
+
 ## Test flow
 
 Running the tests contains the following steps:
